@@ -4,12 +4,12 @@
 using namespace std;
 
 char z = '*', sel, st;
-const double SS = 175.00, MS = 190.00, LS = 200.00;//cost of each surfboard
-int sm, me, la, sq;
+const double XS = 135.00, SS = 175.00, MS = 190.00, LS = 200.00;//cost of each surfboard
+int xs, sm, me, la, sq;
 void ShowUsage();
-void MakePurchase(int& iTotalSmall, int& iTotalMedium, int& iTotalLarge);
-void DisplayPurchase(const int iTotalSmall, const int iTotalMedium, const int iTotalLarge);
-void DisplayTotal(const int iTotalSmall, const int iTotalMedium, const int iTotalLarge);
+void MakePurchase(int& iTotalXSmall, int& iTotalSmall, int& iTotalMedium, int& iTotalLarge);
+void DisplayPurchase(const int iTotalXSmall, const int iTotalSmall, const int iTotalMedium, const int iTotalLarge);
+void DisplayTotal(const int iTotalXSmall, const int iTotalSmall, const int iTotalMedium, const int iTotalLarge);
 int main() //required functions
 {
   cout << setw(61) << setfill('*') << z << endl;
@@ -20,6 +20,7 @@ int main() //required functions
   int iTotalSmall = 0;
   int iTotalMedium = 0;
   int iTotalLarge = 0;
+  int iTotalXSmall = 0;
 
   ShowUsage();
   while (sel)
@@ -60,18 +61,23 @@ void MakePurchase(int& iTotalSmall, int& iTotalMedium, int& iTotalLarge)
       iTotalMedium = sq + iTotalMedium;
     else if (st == 'l' || st == 'L')
       iTotalLarge = sq + iTotalLarge;
-  }//
+    else if (st == 'x' || st == 'X')
+      iTotalLarge = sq + iTotalLarge;
+  }//asks user how much of each type of surfboard the user wants to purchase
 void DisplayPurchase(const int iTotalSmall, const int iTotalMedium, const int iTotalLarge)
 {
+  const double SS = 175.00, MS = 190.00, LS = 200.00;
 if (iTotalSmall >= 1)
   cout << "The total number of small surfboards is " << iTotalSmall << endl;
 else if (iTotalMedium >= 1)
   cout << "The total number of medium surfboards is " << iTotalMedium << endl;
 else if (iTotalLarge >= 1)
   cout << "The total number of large surfboards is " << iTotalLarge << endl;
+else  if (iTotalXSmall >= 1)
+  cout << "The total number of small surfboards is " << iTotalXSmall << endl;
 else
   cout << "No Purcahses made yet" << endl;
-}
+}//the number of surfboards being purchased is calculated when the number is greater than or equal to 1.
 void DisplayTotal(const int iTotalSmall, const int iTotalMedium, const int iTotalLarge)
 {
   if(iTotalSmall > 0)
@@ -80,10 +86,12 @@ void DisplayTotal(const int iTotalSmall, const int iTotalMedium, const int iTota
     cout<<"The total number of medium surfboards is " << iTotalMedium << " at a total of $"<< iTotalMedium*MS<<endl;
   else if(iTotalLarge > 0)
     cout<<"The total number of large surfboards is "<<iTotalLarge << " at a total of $"<<iTotalLarge*LS<<endl<<endl;
+  else if(iTotalXSmall > 0)
+    cout<<"The total number of large surfboards is "<<iTotalXSmall << " at a total of $"<<iTotalXSmall*XS<<endl<<endl;
   else 
     cout << "No Purchases made yet"; 
   
-}
+}//The number of surfboards and total pay
 
   
 
