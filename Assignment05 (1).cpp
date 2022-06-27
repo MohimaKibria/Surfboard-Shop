@@ -28,11 +28,11 @@ int main() //required functions
     if (sel == 'S'||sel == 's')
       ShowUsage();
     else if (sel == 'P'||sel == 'p')
-      MakePurchase(iTotalSmall,iTotalMedium ,iTotalLarge);
+      MakePurchase(iTotalXSmall, iTotalSmall,iTotalMedium ,iTotalLarge);
     else if (sel == 'C'||sel == 'c')
-      DisplayPurchase(iTotalSmall,iTotalMedium ,iTotalLarge);
+      DisplayPurchase(iTotalXSmall, iTotalSmall,iTotalMedium ,iTotalLarge);
     else if (sel == 'T'||sel == 't')
-      DisplayTotal(iTotalSmall,iTotalMedium ,iTotalLarge);
+      DisplayTotal(iTotalXSmall, iTotalSmall,iTotalMedium ,iTotalLarge);
     else
       cout<<"Thank you"<<endl;
     return 0;
@@ -50,7 +50,7 @@ void ShowUsage()
     cout << "Please enter selection: ";
     cin >> sel;
 } //asks user to input a character inorder to determine which function to run.
-void MakePurchase(int& iTotalSmall, int& iTotalMedium, int& iTotalLarge)
+void MakePurchase(int& iTotalXSmall, int& iTotalSmall, int& iTotalMedium, int& iTotalLarge)
 {
     cout << "Please enter the quantity and type (S = small, M = medium, L = large) of surfboard you would like to purchase: ";
     cin >> sq;
@@ -64,7 +64,8 @@ void MakePurchase(int& iTotalSmall, int& iTotalMedium, int& iTotalLarge)
     else if (st == 'x' || st == 'X')
       iTotalLarge = sq + iTotalLarge;
   }//asks user how much of each type of surfboard the user wants to purchase
-void DisplayPurchase(const int iTotalSmall, const int iTotalMedium, const int iTotalLarge)
+void DisplayPurchase(const int iTotalXSmall, const int iTotalSmall, const int iTotalMedium, const int iTotalLarge)
+
 {
   const double SS = 175.00, MS = 190.00, LS = 200.00;
 if (iTotalSmall >= 1)
@@ -78,7 +79,8 @@ else  if (iTotalXSmall >= 1)
 else
   cout << "No Purcahses made yet" << endl;
 }//the number of surfboards being purchased is calculated when the number is greater than or equal to 1.
-void DisplayTotal(const int iTotalSmall, const int iTotalMedium, const int iTotalLarge)
+void DisplayTotal(const int iTotalXSmall, const int iTotalSmall, const int iTotalMedium, const int iTotalLarge)
+
 {
   if(iTotalSmall > 0)
     cout<<"The total number of small surfboards is " << iTotalSmall << " at a total of $"<<iTotalSmall*SS<<endl;
